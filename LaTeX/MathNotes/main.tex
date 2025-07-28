@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+
+% --- 常用宏包 ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{xcolor}
+
+% 页面设置
+\geometry{margin=1in}
+
+% --- 自定义定理样式: italic remark ---
+\newtheoremstyle{italicremark}  
+  {3pt} {3pt} {\itshape} {} {\bfseries} {.} { } {}
+
+% --- 定理环境定义 ---
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{italicremark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- 自定义命令示例 ---
+\newcommand{\e}{\mathrm{e}} % 定义自然对数底e
+\newcommand{\ii}{\mathrm{i}} % 定义虚数单位i
+\newcommand{\abs}[1]{\left\vert #1 \right\vert} % 定义绝对值符号
+\newcommand{\norm}[1]{\left\| #1 \right\|} % 定义范数符号
+\newcommand{\RR}{\mathbb{R}} % 定义实数集符号
+\newcommand{\CC}{\mathbb{C}} % 定义复数集符号
+\newcommand{\ZZ}{\mathbb{Z}} % 定义整数集符号
+\newcommand{\NN}{\mathbb{N}} % 定义自然数集符号
+\newcommand{\QQ}{\mathbb{Q}} % 定义有理数集符号
+\newcommand{\EE}{\mathbb{E}} % 定义期望符号
+\newcommand{\PP}{\mathbb{P}} % 定义概率符号
+\newcommand{\FF}{\mathbb{F}} % 定义滤波器符号
+
+\newcommand{\hI}{\mathcal{I}}
+\newcommand{\hL}{\mathcal{L}}
+\newcommand{\hN}{\mathcal{N}}
+\newcommand{\Lk}{\mathcal{L}_{\kappa}}
+\newcommand{\Linf}{L^{\infty}}
+\newcommand{\rd}{\mathrm{~d}}
+\newcommand{\nn}{\nonumber}
+
+% --- 文章信息 ---
+\title{A Minimal Template: Demonstration of LaTeX Environments}
+\author{Pinzhong Zheng\thanks{The Hong Kong Polytechnic University, pinzhong.zheng@connect.polyu.hk}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a sample abstract. 
+\end{abstract}
+
+\section{Introduction}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit~\cite{DuEtAl2021MaximumBound}. 
+
+\subsection{Sample Equation}
+Consider the following equation:
+\begin{equation}\label{eq:sample}
+    \int_{\Omega} u(x) \, \mathrm{d}x = 0.
+\end{equation}
+
+\section{Mathematical Environments}
+
+\begin{theorem}[Sample Theorem]\label{thm:sample}
+Let $x \in \RR$. Then for all $x$, we have $\abs{x} \ge 0$.
+\end{theorem}
+
+\begin{proof}
+Trivially, by the definition of absolute value.
+\end{proof}
+
+\begin{lemma}[Sample Lemma]\label{lem:sample}
+For any $a, b \in \RR$, $\abs{a+b} \le \abs{a} + \abs{b}$.
+\end{lemma}
+
+\begin{proposition}[Sample Proposition]
+If $x > 1$, then $x^2 > 1$.
+\end{proposition}
+
+\begin{corollary}[Sample Corollary]
+If $x > 1$, then $x^4 > 1$.
+\end{corollary}
+
+\begin{definition}[Sample Definition]
+A set $S$ is \emph{bounded} if there exists $M > 0$ such that $\abs{x} < M$ for all $x \in S$.
+\end{definition}
+
+\begin{remark}
+This is a remark. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+\end{remark}
+
+\section{Figures and Tables}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{example-image}
+  \caption{A sample figure using the default image.}
+  \label{fig:sample}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+Method & Accuracy & Time (s) \\
+\midrule
+A & 95\% & 1.23 \\
+B & 93\% & 0.98 \\
+\bottomrule
+\end{tabular}
+\caption{Sample comparison table.}
+\label{tab:comparison}
+\end{table}
+
+\section{Citation Example}
+
+As shown in Theorem~\ref{thm:sample}, the absolute value is always non-negative.
+
+\section{Conclusion}
+Lorem ipsum dolor sit amet. Suspendisse nec luctus dui. 
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+\end{document}
