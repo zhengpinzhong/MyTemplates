@@ -8,12 +8,15 @@ function my_plot()
     outputDir = 'figs/';
     fileName = 'myplot.pdf';
     styles = {'-','--','-.',':'};
-    markers = {'o','^','s','d','p'};% 圆, 三角, 方, 菱形, 五角
-    colors = lines(4);% 默认4种区分色，Matlab自带
+    markers = {'o','^','s','d','p'}; % 圆, 三角, 方, 菱形, 五角
+    colors = lines(4); % 默认4种区分色，Matlab自带
 
     % 单栏
     width_cm = 8.5;
-    height_cm = 6;
+    height_cm = width_cm*3/4;
+    % % 双栏
+    % width_cm = 14;  
+    % height_cm = 7; % 7～8cm 
 
     % LaTeX 渲染设置
     set(0,'defaultTextInterpreter','latex'); 
@@ -53,6 +56,6 @@ function my_plot()
     ylabel('$y$','Interpreter','latex');
     legend(legendLabels, 'Location', 'northwest', 'Interpreter', 'latex');
     title(plotTitle, 'Interpreter', 'latex');
-    exportgraphics(fig, [outputDir fileName], 'ContentType','vector');
-    %close(fig);
+    exportgraphics(fig, [outputDir fileName], 'ContentType', 'vector');
+    % close(fig);
 end
