@@ -13,9 +13,9 @@ function my_plot()
     markers = {'o','^','s','d','p'}; % 圆, 三角, 方, 菱形, 五角
     colors = lines(4); % 默认4种区分色，Matlab自带
 
-    % 单栏
-    width_cm = 8.5;
-    height_cm = width_cm*3/4;
+    textWidth_cm = 16.50764;
+    width_cm = textWidth_cm*0.8;
+    height_cm = 6.5;
 
     % LaTeX 渲染设置
     set(0,'defaultTextInterpreter','latex'); 
