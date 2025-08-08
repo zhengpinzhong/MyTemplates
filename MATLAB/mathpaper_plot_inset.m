@@ -20,19 +20,7 @@ function mathpaper_plot_inset()
     width_cm = textWidth_cm*0.8;
     height_cm = 6.5;
 
-    % inset参数结构体
-    insetopt.x_min    = 0.9;
-    insetopt.x_max    = 1.1;
-    insetopt.pos      = [0.2, 0.6, 0.23, 0.23]; % 左上角
-    insetopt.lineWidth= lineWidth;
-    insetopt.boxLineWidth= boxLineWidth;
-    insetopt.boxLineWidth= 0.5;
-    insetopt.styles   = styles;
-    insetopt.markers  = markers;
-    insetopt.colors   = colors;
-    insetopt.fontName = fontName;
-    insetopt.axisFontSize = axisFontSize;
-    insetopt.showYTick= true;
+
 
     % LaTeX 渲染设置
     set(0,'defaultTextInterpreter','latex'); 
@@ -53,17 +41,16 @@ function mathpaper_plot_inset()
         plot(axMain, x, Y(i,:), ...
             'LineWidth', lineWidth, ...
             'LineStyle', styles{i}, ...
+            'Color', colors(i,:), ...
             'Marker', markers{i}, ...
             'MarkerIndices', 1:50:length(x), ...
             'MarkerSize', 5, ...
-            'Color', colors(i,:), ...
             'MarkerFaceColor', colors(i,:));
     end
 
-
     hold(axMain,'off');
 
-    
+
     box(axMain,'on'); 
     % 设置坐标轴字体和字号
     set(axMain, 'FontName', fontName, 'FontSize', axisFontSize, 'LineWidth', boxLineWidth);
@@ -82,6 +69,20 @@ function mathpaper_plot_inset()
 
 
     % --------- 调用 inset 函数 -------------
+    % inset参数结构体
+    insetopt.x_min    = 0.9;
+    insetopt.x_max    = 1.1;
+    insetopt.pos      = [0.2, 0.6, 0.23, 0.23]; % 左上角
+    insetopt.lineWidth= lineWidth;
+    insetopt.boxLineWidth= boxLineWidth;
+    insetopt.annLineWidth= 0.5;
+    insetopt.styles   = styles;
+    insetopt.markers  = markers;
+    insetopt.colors   = colors;
+    insetopt.fontName = fontName;
+    insetopt.axisFontSize = axisFontSize;
+    insetopt.showYTick= true;
+    
     my_inset(axMain, x, Y, insetopt);
 
 
@@ -116,7 +117,7 @@ function axInset = my_inset(axMain, x, Y, insetOpt)
     % --------- 主图画虚线框 -------------
     hold(axMain, 'on');
     rectPos = [x_min y_min x_max-x_min y_max-y_min];
-    rectangle(axMain,'Position',rectPos,'EdgeColor','k','LineStyle','--','LineWidth',1);
+    rectangle(axMain,'Position',rectPos,'EdgeColor','k','LineStyle','-','LineWidth',annLineWidth);
     hold(axMain, 'off');
 
     % --------- inset子图 -------------
