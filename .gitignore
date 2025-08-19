@@ -1,6 +1,7 @@
 *.vscode
 *.DS_Store
 *.asv
+*.mat
 
 
 ## Core latex/pdflatex auxiliary files:
